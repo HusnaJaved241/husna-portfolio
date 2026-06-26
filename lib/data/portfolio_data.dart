@@ -81,9 +81,9 @@ const List<TechProject> techProjects = [
     title: "This Portfolio Website",
     subtitle: "Flutter (Web + Mobile)",
     description:
-        "Built and deployed this cross-platform portfolio using Flutter, showing I can design, build, and ship real software — not just talk about it.",
+        "Built and deployed this cross-platform portfolio using Flutter, showing I can design, build, and ship real software, not just talk about it.",
     techStack: ["Flutter", "Dart", "GitHub Pages", "GitHub Actions"],
-    repoUrl: "https://github.com/yourusername/portfolio",
+    repoUrl: "https://husnajaved241.github.io/husna-portfolio/",
   ),
   TechProject(
     title: "Saudi Banking Fraud Detection Dashboard",
