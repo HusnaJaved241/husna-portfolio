@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Husna Javed — Computer Science Educator & Data Analyst portfolio. Lesson plans, data projects, and a Flutter app built from scratch.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Husna Portfolio">
+
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Husna Javed — CS Educator & Data Analyst</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    html, body {
+      background-color: #0B0D17;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #loading {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0B0D17;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    #loading.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-stage {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Each shape starts scattered, rotated, and transparent, then
+       assembles into a centered, stacked mark. Staggered animation-delay
+       on each gives the "assembling" feel. */
+    .shape {
+      position: absolute;
+      opacity: 0;
+      animation: assemble 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+
+    .shape-square {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6C5CE7, #4834D4);
+      animation-delay: 0s;
+      --start-x: -90px;
+      --start-y: -70px;
+      --start-rot: -140deg;
+    }
+
+    .shape-triangle {
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 52px solid #FF7F50;
+      animation-delay: 0.18s;
+      --start-x: 100px;
+      --start-y: -60px;
+      --start-rot: 160deg;
+    }
+
+    .shape-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FFC857, #FF7F50);
+      animation-delay: 0.36s;
+      --start-x: 0px;
+      --start-y: 90px;
+      --start-rot: 90deg;
+    }
+
+    @keyframes assemble {
+      0% {
+        opacity: 0;
+        transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rot)) scale(0.4);
+      }
+      45% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+      70% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rot)) scale(0.4);
+      }
+    }
+
+    .loader-text {
+      position: absolute;
+      bottom: -48px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #A0A3B1;
+      text-transform: uppercase;
+    }
+
+    .loader-text span {
+      color: #FFC857;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div class="loader-stage">
+      <div class="shape shape-square"></div>
+      <div class="shape shape-triangle"></div>
+      <div class="shape shape-circle"></div>
+      <div class="loader-text">Building<span>.</span><span>.</span><span>.</span></div>
+    </div>
+  </div>
+
+  <script>
+    // Flutter web fires this event once the app is ready to take over the
+    // screen. We fade the custom loader out smoothly instead of an abrupt
+    // swap, so the transition feels intentional.
+    window.addEventListener('flutter-first-frame', function () {
+      var loader = document.getElementById('loading');
+      if (loader) {
+        loader.classList.add('fade-out');
+        setTimeout(function () {
+          loader.remove();
+        }, 650);
+      }
+    });
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
